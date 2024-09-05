@@ -1,7 +1,7 @@
 FROM golang as builder
 RUN go get github.com/codegangsta/negroni
 RUN go get github.com/gorilla/mux github.com/xyproto/simpleredis
-COPY main.go .
+COPY go.mod go.sum ./
 RUN go build main.go
 
 FROM busybox:ubuntu-14.04
