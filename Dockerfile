@@ -24,7 +24,7 @@ WORKDIR /app
 COPY --from=builder /app/guestbook /app/guestbook
 
 # Copy static files (HTML, JS, CSS)
-COPY public /app/public
+#COPY public /app/public
 
 # Set the command to run the guestbook application
 CMD ["./guestbook"]
