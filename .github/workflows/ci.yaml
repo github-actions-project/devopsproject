@@ -34,7 +34,7 @@ jobs:
     - name: Deploy Guestbook Application with Helm
       run: |
           cd helm
-          helm upgrade --install guestbook . --values values.yaml --namespace default
+          helm upgrade --install helm . --values values.yaml --namespace default
 
 # push to ECR 
     - name: Login to Amazon ECR
