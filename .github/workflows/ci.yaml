@@ -24,7 +24,7 @@ jobs:
 
     - name: Update kube config
       run: aws eks update-kubeconfig --name EKS-CLOUD --region ${{ secrets.AWS_DEFAULT_REGION }}
-      
+
     - name: Setup Helm
       run: |
           curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
@@ -33,7 +33,7 @@ jobs:
   
     - name: Deploy Guestbook Application with Helm
       run: |
-          cd devopsproject/helm
+          cd helm
           helm upgrade --install guestbook . --values values.yaml --namespace default
 
 # push to ECR 
