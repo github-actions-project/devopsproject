@@ -1,18 +1,5 @@
-FROM golang as builder
-RUN go get github.com/codegangsta/negroni
-RUN go get github.com/gorilla/mux github.com/xyproto/simpleredis
-COPY main.go .
-RUN go build main.go
-
-FROM busybox:ubuntu-14.04
-
-COPY --from=builder /go//main /app/guestbook
-
-#ADD public/index.html /app/public/index.html
-#ADD public/script.js /app/public/script.js
-#ADD public/style.css /app/public/style.css
-#ADD public/jquery.min.js /app/public/jquery.min.js
-
-WORKDIR /app
-CMD ["./guestbook"]
-EXPOSE 3001
+FROM ubuntu:20.04
+RUN apt-get update && apt-get install -y python3 python3-pip
+RUN pip3 install flask
+COPY app.py /opt/
+ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0 --port=3000

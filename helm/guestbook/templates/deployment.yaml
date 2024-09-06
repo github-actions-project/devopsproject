@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysimpleapp
+  labels: 
+    app: mysimpleapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysimpleapp
+  template:
+    metadata:
+      labels:
+        app: mysimpleapp
+    spec:
+      containers:
+      - name: mysimpleapp
+        image: soumyabani/mysimpleapp:{{ .Values.image.tag }}
+        ports:
+        - containerPort: 3000
+
