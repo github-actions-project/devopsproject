@@ -15,10 +15,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - www.kube123.com
+    - sample.kubeace.com
     secretName: argocd-tls
   rules:
-  - host: www.kube123.com
+  - host: sample.kubeace.com
     http:
       paths:
       - path: /
