@@ -4,10 +4,11 @@ metadata:
   name: guestbook
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/issuer: "letsencrypt-dev"
 spec:
   ingressClassName: nginx
   rules:
-  - host: guestbook.local
+  - host: sample.kubeace.com
     http:
       paths:
       - path: /
@@ -17,3 +18,7 @@ spec:
             name: guestbook
             port:
               number: 3000
+  tls:
+  - hosts:
+    - sample.kubeace.com
+    secretName: sample-kubeace.com-tls
