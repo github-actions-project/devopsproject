@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysimpleapp
+  name: guestbook
   labels: 
-    app: mysimpleapp
+    app: guestbook
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysimpleapp
+      app: guestbook
   template:
     metadata:
       labels:
-        app: mysimpleapp
+        app: guestbook
     spec:
       containers:
-      - name: mysimpleapp
-        image: soumyabani/mysimpleapp:{{ .Values.image.tag }}
+      - name: guestbook
+        image: nginx:{{ .Values.image.tag }}
         ports:
         - containerPort: 3000
 
