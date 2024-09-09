@@ -10,3 +10,13 @@ module "eks" {
     subnets = module.vpc.subnet_ids
     vpc_id = module.vpc.vpc_id
 }
+
+ module "route53" {
+    source = "./modules/route53"
+    
+  }
+
+module "sg" {
+    source = "./modules/sg"
+    vpc_id = module.vpc.vpc_id
+}
